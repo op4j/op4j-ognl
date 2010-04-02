@@ -16,7 +16,7 @@ import org.javaruntype.type.Types;
 import org.junit.Before;
 import org.junit.Test;
 import org.op4j.functions.Function;
-import org.op4j.functions.ognl.FnOgnl;
+import org.op4j.ognl.functions.FnOgnl;
 
 public class AssortedTests extends TestCase {
 

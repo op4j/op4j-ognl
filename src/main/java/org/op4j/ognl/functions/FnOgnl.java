@@ -17,7 +17,7 @@
  * 
  * =============================================================================
  */
-package org.op4j.functions.ognl;
+package org.op4j.ognl.functions;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

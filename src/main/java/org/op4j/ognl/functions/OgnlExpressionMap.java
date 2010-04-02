@@ -18,7 +18,7 @@
  * =============================================================================
  */
 
-package org.op4j.functions.ognl;
+package org.op4j.ognl.functions;
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
