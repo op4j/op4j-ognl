@@ -1,0 +1,4 @@
+1.0-beta3
+=========
+
+- First version of op4j-ognl as an extension library (separated from op4j core)
