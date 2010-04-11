@@ -35,7 +35,7 @@ public class AssortedTests extends TestCase {
 
 		String[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
-		.exec(Types.STRING, FnOgnl.asString("\"Value is \" + #target"))
+		.exec(Types.STRING, FnOgnl.evalForString("\"Value is \" + #target"))
 		.get();
 
 		for (int index = 0; index < data.length; index++) {						
@@ -51,7 +51,7 @@ public class AssortedTests extends TestCase {
 		Integer[] result = Op.onArrayOf(Types.INTEGER, data)
 		.forEach()
 		.ifIndex(2, 4, 6, 10, 15)
-		.exec(FnOgnl.asInteger("#target + 10"))
+		.exec(FnOgnl.evalForInteger("#target + 10"))
 		.endIf()
 		.endFor()
 		.get();
@@ -68,13 +68,13 @@ public class AssortedTests extends TestCase {
     
     @Test
     public void test3() throws Exception {
-        assertEquals(Boolean.TRUE, Op.onListFor(10,11).all(FnOgnl.asBoolean("#target <= 11")).get());
+        assertEquals(Boolean.TRUE, Op.onListFor(10,11).all(FnOgnl.evalForBoolean("#target <= 11")).get());
     }
 
     
     @Test
     public void test4() throws Exception {
-        assertEquals(Boolean.TRUE, Op.onListFor(10,11).any(FnOgnl.asBoolean("#target < 11")).get());
+        assertEquals(Boolean.TRUE, Op.onListFor(10,11).any(FnOgnl.evalForBoolean("#target < 11")).get());
     }
         
     
@@ -83,8 +83,8 @@ public class AssortedTests extends TestCase {
     public void test45() throws Exception {
     
         
-        Function<Object,String> keyFn = FnOgnl.asString("'KEY: ' + #target");
-        Function<Object,String> valueFn = FnOgnl.asString("'VALUE: ' + #target");
+        Function<Object,String> keyFn = FnOgnl.evalForString("'KEY: ' + #target");
+        Function<Object,String> valueFn = FnOgnl.evalForString("'VALUE: ' + #target");
         
         String[] valuesArray = new String[] {"one", "two", "three", "one"};
         List<String> valuesList = Arrays.asList(valuesArray);

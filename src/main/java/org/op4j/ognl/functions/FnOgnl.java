@@ -24,7 +24,9 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import ognl.OgnlException;
 
@@ -61,67 +63,91 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     
     
     
-    public static FnOgnl<Object,Object> asObject(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Object> evalForObject(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static <R> FnOgnl<Object,R> asType(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+    public static <R> Function<Object,R> evalFor(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,R>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
 
     
     
     
-    public static FnOgnl<Object,BigInteger> asBigInteger(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,BigInteger>(Types.BIG_INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,BigDecimal> asBigDecimal(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,BigDecimal>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Boolean> asBoolean(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Boolean> evalForBoolean(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Boolean>(Types.BOOLEAN, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Byte> asByte(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Byte> evalForByte(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Byte>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Character> asCharacter(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Character> evalForCharacter(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Character>(Types.CHARACTER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Calendar> asCalendar(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Calendar>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Date> asDate(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Date> evalForDate(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Date>(Types.DATE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Double> asDouble(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Double> evalForDouble(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Double>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Float> asFloat(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Float> evalForFloat(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Float>(Types.FLOAT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Integer> asInteger(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Integer> evalForInteger(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Integer>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Long> asLong(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Long> evalForLong(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Long>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,Short> asShort(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,Short> evalForShort(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Short>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
-    public static FnOgnl<Object,String> asString(final String ognlExpression, final Object... optionalParameters) {
+    public static Function<Object,String> evalForString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,String>(Types.STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    public static Function<Object,List<String>> evalForListOfString(final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,List<String>>(Types.LIST_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    public static Function<Object,Set<String>> evalForSetOfString(final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,Set<String>>(Types.SET_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    public static Function<Object,String[]> evalForArrayOfString(final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,String[]>(Types.ARRAY_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    public static <R> Function<Object,List<R>> evalForListOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,List<R>>(Types.listOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    public static <R> Function<Object,Set<R>> evalForSetOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,Set<R>>(Types.setOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    public static <R> Function<Object,R[]> evalForArrayOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return new FnOgnl<Object,R[]>(Types.arrayOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
     
