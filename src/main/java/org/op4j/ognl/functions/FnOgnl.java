@@ -39,7 +39,11 @@ import org.op4j.functions.Function;
 import org.op4j.util.VarArgsUtil;
 
 
-/** 
+/**
+ * <p>
+ * Function hub class for functions that evaluate OGNL expressions and return their results.
+ * </p>
+ *  
  * @author Daniel Fern&aacute;ndez
  *
  * @since 1.0
@@ -62,11 +66,53 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     private final Object[] parameters;
     
     
-    
+
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Object. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Object> evalForObject(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
+
     
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns an object of type <tt>R</tt>. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     *
+     * @param resultType the type of the object returned by the expression
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static <R> Function<Object,R> evalFor(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,R>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
@@ -74,78 +120,479 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     
     
     
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns BigInteger. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,BigInteger> evalForBigInteger(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,BigInteger>(Types.BIG_INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns BigDecimal. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,BigDecimal>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Boolean. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Boolean> evalForBoolean(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Boolean>(Types.BOOLEAN, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Byte. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Byte> evalForByte(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Byte>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Character. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Character> evalForCharacter(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Character>(Types.CHARACTER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Calendar. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Calendar>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Date. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Date> evalForDate(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Date>(Types.DATE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Double. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Double> evalForDouble(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Double>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Float. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Float> evalForFloat(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Float>(Types.FLOAT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Integer. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Integer> evalForInteger(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Integer>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Long. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Long> evalForLong(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Long>(Types.LONG, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Short. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Short> evalForShort(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Short>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns String. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,String> evalForString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,String>(Types.STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns List&lt;String&gt;. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,List<String>> evalForListOfString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,List<String>>(Types.LIST_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
     
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Set&lt;String&gt;. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,Set<String>> evalForSetOfString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Set<String>>(Types.SET_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns String[]. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static Function<Object,String[]> evalForArrayOfString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,String[]>(Types.ARRAY_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
     
+    
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns List&lt;R&gt;. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param resultType the type of the resulting list components
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static <R> Function<Object,List<R>> evalForListOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,List<R>>(Types.listOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
     
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns Set&lt;R&gt;. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param resultType the type of the resulting set components
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static <R> Function<Object,Set<R>> evalForSetOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Set<R>>(Types.setOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+
     
+    /**
+     * <p>
+     * Evaluates an OGNL expression which returns R[]. This
+     * expression can have parameters (specified as the varargs <tt>optionalParameters</tt>
+     * method parameter).
+     * </p>
+     * <p>
+     * The following predefined variables can be used inside the expression:
+     * </p>
+     * <ul>
+     *   <li><tt>#target</tt>: the target object (the target object is also the root of the expression)</li>
+     *   <li><tt>#param</tt>: the specified parameters, as an array (specific parameters are thus accessible with "<tt>#param[0]</tt>", "<tt>#param[1]</tt>", ...)</li>
+     *   <li><tt>#index</tt>: if the expression is executed during the iteration of an array, list,
+     *       map or set, this variable will hold the iteration index.</li>
+     * </ul>
+     * 
+     * @param resultType the type of the resulting array components
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
     public static <R> Function<Object,R[]> evalForArrayOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,R[]>(Types.arrayOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
@@ -174,7 +621,7 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     
     
     @SuppressWarnings("unchecked")
-    public static <X> X evalOgnlExpression(
+    private static <X> X evalOgnlExpression(
             final Type<X> resultType, final String ognlExpression, final Object targetObject, final Object parametersObject, 
             final ExecCtx execCtx) {
         
