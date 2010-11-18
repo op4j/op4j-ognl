@@ -90,6 +90,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     public static Function<Object,Object> evalForObject(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Object>(Types.OBJECT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
     }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForObject(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Object> obj(final String ognlExpression, final Object... optionalParameters) {
+        return evalForObject(ognlExpression, optionalParameters);
+    }
 
     
     /**
@@ -115,6 +132,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,R> evalFor(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,R>(resultType, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalFor(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static <R> Function<Object,R> obj(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return evalFor(resultType, ognlExpression, optionalParameters);
     }
 
     
@@ -145,6 +179,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForBigInteger(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,BigInteger> bigInteger(final String ognlExpression, final Object... optionalParameters) {
+        return evalForBigInteger(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns BigDecimal. This
@@ -167,6 +218,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,BigDecimal> evalForBigDecimal(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,BigDecimal>(Types.BIG_DECIMAL, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForBigDecimal(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,BigDecimal> bigDecimal(final String ognlExpression, final Object... optionalParameters) {
+        return evalForBigDecimal(ognlExpression, optionalParameters);
     }
     
     
@@ -195,6 +263,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForBoolean(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Boolean> bool(final String ognlExpression, final Object... optionalParameters) {
+        return evalForBoolean(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns Byte. This
@@ -217,6 +302,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,Byte> evalForByte(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Byte>(Types.BYTE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForByte(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Byte> b(final String ognlExpression, final Object... optionalParameters) {
+        return evalForByte(ognlExpression, optionalParameters);
     }
     
     
@@ -245,6 +347,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalCharacter(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Character> c(final String ognlExpression, final Object... optionalParameters) {
+        return evalForCharacter(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns Calendar. This
@@ -267,6 +386,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,Calendar> evalForCalendar(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Calendar>(Types.CALENDAR, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForCalendar(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Calendar> calendar(final String ognlExpression, final Object... optionalParameters) {
+        return evalForCalendar(ognlExpression, optionalParameters);
     }
     
     
@@ -295,6 +431,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForDate(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Date> date(final String ognlExpression, final Object... optionalParameters) {
+        return evalForDate(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns Double. This
@@ -317,6 +470,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,Double> evalForDouble(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Double>(Types.DOUBLE, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForDouble(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Double> d(final String ognlExpression, final Object... optionalParameters) {
+        return evalForDouble(ognlExpression, optionalParameters);
     }
     
     
@@ -345,6 +515,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForFloat(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Float> f(final String ognlExpression, final Object... optionalParameters) {
+        return evalForFloat(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns Integer. This
@@ -367,6 +554,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,Integer> evalForInteger(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Integer>(Types.INTEGER, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForInteger(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Integer> i(final String ognlExpression, final Object... optionalParameters) {
+        return evalForInteger(ognlExpression, optionalParameters);
     }
     
 
@@ -395,6 +599,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForLong(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Long> l(final String ognlExpression, final Object... optionalParameters) {
+        return evalForLong(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns Short. This
@@ -417,6 +638,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,Short> evalForShort(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Short>(Types.SHORT, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class, optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForShort(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Short> shr(final String ognlExpression, final Object... optionalParameters) {
+        return evalForShort(ognlExpression, optionalParameters);
     }
     
     
@@ -445,6 +683,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,String> s(final String ognlExpression, final Object... optionalParameters) {
+        return evalForString(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns List&lt;String&gt;. This
@@ -467,6 +722,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,List<String>> evalForListOfString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,List<String>>(Types.LIST_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForListOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,List<String>> listOfString(final String ognlExpression, final Object... optionalParameters) {
+        return evalForListOfString(ognlExpression, optionalParameters);
     }
 
     
@@ -495,6 +767,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     }
     
     
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForSetOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,Set<String>> setOfString(final String ognlExpression, final Object... optionalParameters) {
+        return evalForSetOfString(ognlExpression, optionalParameters);
+    }
+    
+    
     /**
      * <p>
      * Evaluates an OGNL expression which returns String[]. This
@@ -517,6 +806,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static Function<Object,String[]> evalForArrayOfString(final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,String[]>(Types.ARRAY_OF_STRING, ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForArrayOfString(String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static Function<Object,String[]> arrayOfString(final String ognlExpression, final Object... optionalParameters) {
+        return evalForArrayOfString(ognlExpression, optionalParameters);
     }
     
     
@@ -544,6 +850,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     public static <R> Function<Object,List<R>> evalForListOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,List<R>>(Types.listOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForListOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static <R> Function<Object,List<R>> listOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return evalForListOf(resultType, ognlExpression, optionalParameters);
+    }
 
     
     /**
@@ -570,6 +893,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
     public static <R> Function<Object,Set<R>> evalForSetOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,Set<R>>(Types.setOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
     }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForSetOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static <R> Function<Object,Set<R>> setOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return evalForSetOf(resultType, ognlExpression, optionalParameters);
+    }
 
     
     /**
@@ -595,6 +935,23 @@ public final class FnOgnl<T,R> extends Function<T,R> {
      */
     public static <R> Function<Object,R[]> evalForArrayOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
         return new FnOgnl<Object,R[]>(Types.arrayOf(resultType), ognlExpression, VarArgsUtil.asOptionalObjectArray(Object.class,optionalParameters));
+    }
+    
+    
+
+    /**
+     * <p>
+     * Abbreviation for {{@link #evalForArrayOf(Type, String, Object...)}.
+     * </p>
+     * 
+     * @since 1.1
+     * 
+     * @param ognlExpression the OGNL expression
+     * @param optionalParameters the optional parameters
+     * @return the result of evaluating the expression
+     */
+    public static <R> Function<Object,R[]> arrayOf(final Type<R> resultType, final String ognlExpression, final Object... optionalParameters) {
+        return evalForArrayOf(resultType, ognlExpression, optionalParameters);
     }
     
     
